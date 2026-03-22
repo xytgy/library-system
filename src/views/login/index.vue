@@ -29,9 +29,9 @@
         </el-form-item>
         <div class="login-options">
           <el-checkbox v-model="rememberMe">记住我</el-checkbox>
-          <el-button link type="primary">忘记密码</el-button>
+          <el-button link type="primary" @click="handleForgotPassword">忘记密码</el-button>
         </div>
-        <el-button :loading="loading" class="login-button" type="primary" @click="handleLogin">登录</el-button>
+        <el-button :loading="loading" class="login-button" type="primary" @click="handleLogin">{{ loading ? '登录中' : '立即登录' }}</el-button>
       </el-form>
         <div class="login-footer">
       <div class="divider">
@@ -61,6 +61,7 @@ import { User, Lock } from '@element-plus/icons-vue'
 import type { FormRules, FormInstance } from 'element-plus'
 import { ElMessage } from 'element-plus'
 import { login } from '@/api/auth'
+import router from '@/router'
 const loginForm = reactive({
   username: '',
   password: ''
@@ -76,7 +77,7 @@ const rules = reactive<FormRules>({
 const handleLogin = async () => {
   if (!loginFormRef.value) return;
   try {
-    await loginFormRef.value.validate
+    await loginFormRef.value.validate()
     loading.value = true
     const res: any = await login(loginForm)
     if (res.code === 200) {
@@ -96,6 +97,9 @@ const handleLogin = async () => {
   
 }
 
+const handleForgotPassword = () => {
+  router.push('/forgot-password')
+}
 </script>
 
 <style scoped>
