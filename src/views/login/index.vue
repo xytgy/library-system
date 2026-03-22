@@ -28,8 +28,8 @@
           </el-input>
         </el-form-item>
         <div class="login-options">
-          <el-checkbox v-model="rememberMe">记住密码</el-checkbox>
-          <el-button >忘记密码</el-button>
+          <el-checkbox v-model="rememberMe">记住我</el-checkbox>
+          <el-button link type="primary">忘记密码</el-button>
         </div>
         <el-button :loading="loading" class="login-button" type="primary" @click="handleLogin">登录</el-button>
       </el-form>
@@ -59,6 +59,8 @@
 import { reactive, ref } from 'vue'
 import { User, Lock } from '@element-plus/icons-vue'
 import type { FormRules, FormInstance } from 'element-plus'
+import { ElMessage } from 'element-plus'
+import { login } from '@/api/auth'
 const loginForm = reactive({
   username: '',
   password: ''
@@ -73,6 +75,25 @@ const rules = reactive<FormRules>({
 
 const handleLogin = async () => {
   if (!loginFormRef.value) return;
+  try {
+    await loginFormRef.value.validate
+    loading.value = true
+    const res: any = await login(loginForm)
+    if (res.code === 200) {
+      const{token, userInfo} = res.data
+      localStorage.setItem('token', token)
+      localStorage.setItem('userInfo', JSON.stringify(userInfo))
+      ElMessage.success('登录成功')
+      if (userInfo.role === 'student' || userInfo.role === 'user') {
+      } else {
+      }
+    }
+  } catch (error) {
+    console.error('失败:', error)
+  } finally {
+    loading.value = false
+  }
+  
 }
 
 </script>
