@@ -61,7 +61,8 @@ import { User, Lock } from '@element-plus/icons-vue'
 import type { FormRules, FormInstance } from 'element-plus'
 import { ElMessage } from 'element-plus'
 import { login } from '@/api/auth'
-import router from '@/router'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const loginForm = reactive({
   username: '',
   password: ''
