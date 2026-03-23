@@ -20,6 +20,14 @@
       path: '/',
       name: 'MainLayout',
       component: () => import('../layout/MainLayout.vue'),
+      children: [
+        {
+          path: '/dashboard',
+          name: 'Dashboard',
+          component: () => import('../views/dashboard/index.vue'),
+          meta: { title: '数据统计', roles: ['super_admin', 'admin', 'user', 'student'] }
+        }
+      ]
     }
   ]
   const router = createRouter({
