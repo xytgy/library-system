@@ -18,6 +18,7 @@
     },
     {
       path: '/',
+      name: 'MainLayout',
       component: () => import('../layout/MainLayout.vue'),
     }
   ]

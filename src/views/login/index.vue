@@ -61,7 +61,8 @@ import { User, Lock } from '@element-plus/icons-vue'
 import type { FormRules, FormInstance } from 'element-plus'
 import { ElMessage } from 'element-plus'
 import { login } from '@/api/auth'
-import router from '@/router'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const loginForm = reactive({
   username: '',
   password: ''
@@ -85,9 +86,7 @@ const handleLogin = async () => {
       localStorage.setItem('token', token)
       localStorage.setItem('userInfo', JSON.stringify(userInfo))
       ElMessage.success('登录成功')
-      if (userInfo.role === 'student' || userInfo.role === 'user') {
-      } else {
-      }
+      router.push('/')     
     }
   } catch (error) {
     console.error('失败:', error)
