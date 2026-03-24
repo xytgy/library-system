@@ -20,6 +20,14 @@
       path: '/',
       name: 'MainLayout',
       component: () => import('../layout/MainLayout.vue'),
+      children: [
+        {
+          path: '/profile',
+          name: 'Profile',
+          component: () => import('../views/profile/index.vue'),
+          meta: { title: '用户信息' }
+        }
+      ]
     }
   ]
   const router = createRouter({
