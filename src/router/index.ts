@@ -20,6 +20,14 @@
       path: '/',
       name: 'MainLayout',
       component: () => import('../layout/MainLayout.vue'),
+      children: [
+        {
+          path: "/user",
+          name: "User",
+          component: () => import("../views/user/index.vue"),
+          meta: { title: "用户管理", roles: ["super_admin", "admin"] }
+        }
+      ]
     }
   ]
   const router = createRouter({
