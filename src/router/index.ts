@@ -20,7 +20,15 @@
       path: '/',
       name: 'MainLayout',
       component: () => import('../layout/MainLayout.vue'),
-    }
+      children: [
+        {
+          path: '/borrow',
+          name: 'Borrow',
+          component: () => import('../views/borrow/index.vue'),
+          meta: { title: '借阅图书' }
+        }
+      ]
+    } 
   ]
   const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
