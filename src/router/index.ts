@@ -20,6 +20,14 @@
       path: '/',
       name: 'MainLayout',
       component: () => import('../layout/MainLayout.vue'),
+      children: [
+        {
+          path: 'book',
+          name: 'Book',
+          component: () => import('../views/book/index.vue'),
+          meta: { title: '图书管理', roles: ['super_admin', 'admin'] }
+        }
+      ]
     }
   ]
   const router = createRouter({
