@@ -1,5 +1,4 @@
 import request from "@/api/request.ts";
-
 export interface BorrowRecord {
     id?: number
     bookId: number
@@ -25,6 +24,7 @@ export const getStatistics = () => {
         method: 'get'
     })
 }
+
 // 获取借阅列表
 export const getBorrowList = (params?: any) => {
     return request({
@@ -33,7 +33,6 @@ export const getBorrowList = (params?: any) => {
         params
     })
 }
-
 
 // 借阅图书
 export const borrowBook = (data: { bookId: number; userId: number }) => {
@@ -61,5 +60,3 @@ export const deleteBorrow = (id: number) => {
         method: 'delete'
     })
 }
-
-

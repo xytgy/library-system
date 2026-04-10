@@ -19,6 +19,7 @@
     {
       path: '/',
       name: 'MainLayout',
+      redirect: '/dashboard',
       component: () => import('../layout/MainLayout.vue'),
       children: [
         {
@@ -51,6 +52,12 @@
           component: () => import('../views/category/index.vue'),
           meta: { title: '分类管理', roles: ['super_admin', 'admin'] }
         },
+        {
+          path: '/borrow',
+          name: 'Borrow',
+          component: () => import('../views/borrow/index.vue'),
+          meta: { title: '借阅图书' }
+        }
       ]
     }
   ]

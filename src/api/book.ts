@@ -1,5 +1,6 @@
 import request from './request'
 
+
 export interface Book {
     id?: number
     title: string
@@ -15,12 +16,14 @@ export interface Book {
     cover?: string
 }
 
-// 获取图书列表
+
+
+
 export const getBookList = (params?: any) => {
     return request({
         url: '/api/books',
         method: 'get',
-        params
+        params: params || {}
     })
 }
 
