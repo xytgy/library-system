@@ -19,7 +19,6 @@
     {
       path: '/',
       name: 'MainLayout',
-      redirect: '/dashboard',
       component: () => import('../layout/MainLayout.vue'),
       children: [
         {
@@ -57,6 +56,12 @@
           name: 'Borrow',
           component: () => import('../views/borrow/index.vue'),
           meta: { title: '借阅图书' }
+        },
+        {
+          path: '/profile',
+          name: 'Profile',
+          component: () => import('../views/profile/index.vue'),
+          meta: { title: '用户信息' }
         }
       ]
     }

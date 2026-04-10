@@ -11,10 +11,10 @@ export interface User {
     password?: string
 }
 export interface UserQuery {
-  username?: string
-  role?: string
-  pageNum?: number
-  pageSize?: number
+    username?: string
+    role?: string
+    pageNum?: number
+    pageSize?: number
 }
 export const updateUserStatus = (id: number, status: number) => {
     return request({
@@ -33,11 +33,11 @@ export const deleteUser = (id: number) => {
 
 
 export const getUserList = (params?: UserQuery) => {
-  return request({
-    url: '/api/users',
-    method: 'get',
-    params
-  })
+    return request({
+        url: '/api/users',
+        method: 'get',
+        params
+    })
 }
 
 export const addUser = (data: User) => {
@@ -53,5 +53,16 @@ export const updateUser= (id: number, data: Partial<User>)=> {
         url: `/api/users/${id}`,
         method: 'put',
         data: data
+    })
+}
+
+export const uploadAvatar = (data: FormData) => {
+    return request({
+        url: '/api/user/upload-avatar',
+        method: 'post',
+        data,
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
     })
 }
