@@ -32,6 +32,12 @@
           name: "User",
           component: () => import("../views/user/index.vue"),
           meta: { title: "用户管理", roles: ["super_admin", "admin"] }
+        },
+        {
+          path: 'book',
+          name: 'Book',
+          component: () => import('../views/book/index.vue'),
+          meta: { title: '图书管理', roles: ['super_admin', 'admin'] }
         }
       ]
     }
