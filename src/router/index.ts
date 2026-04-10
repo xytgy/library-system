@@ -19,6 +19,7 @@
     {
       path: '/',
       name: 'MainLayout',
+      redirect: '/dashboard',
       component: () => import('../layout/MainLayout.vue'),
       children: [
         {
