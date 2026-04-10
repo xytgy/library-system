@@ -19,7 +19,6 @@
     {
       path: '/',
       name: 'MainLayout',
-      redirect: '/dashboard',
       component: () => import('../layout/MainLayout.vue'),
       children: [
         {
@@ -45,6 +44,12 @@
           name: 'HotBooks',
           component: () => import('../views/hot-books/index.vue'),
           meta: { title: '热门图书', roles: ['super_admin', 'admin', 'student', 'user'] }
+        },
+        {
+          path: 'category',
+          name: 'Category',
+          component: () => import('../views/category/index.vue'),
+          meta: { title: '分类管理', roles: ['super_admin', 'admin'] }
         },
       ]
     }
