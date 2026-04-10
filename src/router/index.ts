@@ -38,7 +38,13 @@
           name: 'Book',
           component: () => import('../views/book/index.vue'),
           meta: { title: '图书管理', roles: ['super_admin', 'admin'] }
-        }
+        },
+        {
+          path: 'hot-books',
+          name: 'HotBooks',
+          component: () => import('../views/hot-books/index.vue'),
+          meta: { title: '热门图书', roles: ['super_admin', 'admin', 'student', 'user'] }
+        },
       ]
     }
   ]
